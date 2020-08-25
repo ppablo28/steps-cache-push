@@ -89,10 +89,10 @@ func main() {
 	// 	log.Printf("No previous cache info found")
 	// }
 
-	// curDescriptor, err := cacheDescriptor(pathToIndicatorPath, ChangeIndicator(configs.FingerprintMethodID))
-	// if err != nil {
-	// 	logErrorfAndExit("Failed to create current cache descriptor: %s", err)
-	// }
+	curDescriptor, err := cacheDescriptor(pathToIndicatorPath, ChangeIndicator(configs.FingerprintMethodID))
+	if err != nil {
+		logErrorfAndExit("Failed to create current cache descriptor: %s", err)
+	}
 
 	// log.Donef("Done in %s\n", time.Since(startTime))
 
