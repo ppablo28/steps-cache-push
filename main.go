@@ -74,63 +74,63 @@ func main() {
 	}
 
 	// Check previous cache
-	startTime = time.Now()
+	// startTime = time.Now()
 
-	log.Infof("Checking previous cache status")
+	// log.Infof("Checking previous cache status")
 
-	prevDescriptor, err := readCacheDescriptor(cacheInfoFilePath)
-	if err != nil {
-		logErrorfAndExit("Failed to read previous cache descriptor: %s", err)
-	}
+	// prevDescriptor, err := readCacheDescriptor(cacheInfoFilePath)
+	// if err != nil {
+	// 	logErrorfAndExit("Failed to read previous cache descriptor: %s", err)
+	// }
 
-	if prevDescriptor != nil {
-		log.Printf("Previous cache info found at: %s", cacheInfoFilePath)
-	} else {
-		log.Printf("No previous cache info found")
-	}
+	// if prevDescriptor != nil {
+	// 	log.Printf("Previous cache info found at: %s", cacheInfoFilePath)
+	// } else {
+	// 	log.Printf("No previous cache info found")
+	// }
 
-	curDescriptor, err := cacheDescriptor(pathToIndicatorPath, ChangeIndicator(configs.FingerprintMethodID))
-	if err != nil {
-		logErrorfAndExit("Failed to create current cache descriptor: %s", err)
-	}
+	// curDescriptor, err := cacheDescriptor(pathToIndicatorPath, ChangeIndicator(configs.FingerprintMethodID))
+	// if err != nil {
+	// 	logErrorfAndExit("Failed to create current cache descriptor: %s", err)
+	// }
 
-	log.Donef("Done in %s\n", time.Since(startTime))
+	// log.Donef("Done in %s\n", time.Since(startTime))
 
-	// Checking file changes
-	if prevDescriptor != nil {
-		startTime = time.Now()
+	// // Checking file changes
+	// if prevDescriptor != nil {
+	// 	startTime = time.Now()
 
-		log.Infof("Checking for file changes")
+	// 	log.Infof("Checking for file changes")
 
-		logDebugPaths := func(paths []string) {
-			for _, pth := range paths {
-				log.Debugf("- %s", pth)
-			}
-		}
+	// 	logDebugPaths := func(paths []string) {
+	// 		for _, pth := range paths {
+	// 			log.Debugf("- %s", pth)
+	// 		}
+	// 	}
 
-		result := compare(prevDescriptor, curDescriptor)
+	// 	result := compare(prevDescriptor, curDescriptor)
 
-		log.Warnf("%d files needs to be removed", len(result.removed))
-		logDebugPaths(result.removed)
-		log.Warnf("%d files has changed", len(result.changed))
-		logDebugPaths(result.changed)
-		log.Warnf("%d files added", len(result.added))
-		logDebugPaths(result.added)
-		log.Debugf("%d ignored files removed", len(result.removedIgnored))
-		logDebugPaths(result.removedIgnored)
-		log.Debugf("%d files did not change", len(result.matching))
-		logDebugPaths(result.matching)
-		log.Debugf("%d ignored files added", len(result.addedIgnored))
-		logDebugPaths(result.addedIgnored)
+	// 	log.Warnf("%d files needs to be removed", len(result.removed))
+	// 	logDebugPaths(result.removed)
+	// 	log.Warnf("%d files has changed", len(result.changed))
+	// 	logDebugPaths(result.changed)
+	// 	log.Warnf("%d files added", len(result.added))
+	// 	logDebugPaths(result.added)
+	// 	log.Debugf("%d ignored files removed", len(result.removedIgnored))
+	// 	logDebugPaths(result.removedIgnored)
+	// 	log.Debugf("%d files did not change", len(result.matching))
+	// 	logDebugPaths(result.matching)
+	// 	log.Debugf("%d ignored files added", len(result.addedIgnored))
+	// 	logDebugPaths(result.addedIgnored)
 
-		if result.hasChanges() {
-			log.Donef("File changes found in %s\n", time.Since(startTime))
-		} else {
-			log.Donef("No files found in %s\n", time.Since(startTime))
-			log.Printf("Total time: %s", time.Since(stepStartedAt))
-			os.Exit(0)
-		}
-	}
+	// 	if result.hasChanges() {
+	// 		log.Donef("File changes found in %s\n", time.Since(startTime))
+	// 	} else {
+	// 		log.Donef("No files found in %s\n", time.Since(startTime))
+	// 		log.Printf("Total time: %s", time.Since(stepStartedAt))
+	// 		os.Exit(0)
+	// 	}
+	// }
 
 	// Generate cache archive
 	startTime = time.Now()
