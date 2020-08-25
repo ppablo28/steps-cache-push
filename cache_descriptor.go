@@ -82,7 +82,7 @@ func cacheDescriptor(pathToIndicatorFile map[string]string, method ChangeIndicat
 		indicatorToPaths[indicatorPath] = append(indicatorToPaths[indicatorPath], path)
 	}
 
-	for indicatorPath, paths := range indicatorToPaths {
+	for _, paths := range indicatorToPaths {
 		var indicator string
 		var err error
 		// if len(indicatorPath) == 0 {
